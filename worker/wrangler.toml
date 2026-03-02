@@ -1,0 +1,13 @@
+# Configuration Cloudflare Worker — Formulaire contact IA CashFlow
+# Deploiement : npx wrangler deploy
+
+name = "contact-worker"
+main = "contact-worker.js"
+compatibility_date = "2024-01-01"
+
+# Variables d'environnement (les secrets se configurent via wrangler secret put)
+# npx wrangler secret put BREVO_API_KEY
+# npx wrangler secret put ALLOWED_ORIGIN
+
+[vars]
+ALLOWED_ORIGIN = "https://iacashflow.pro"

@@ -1,0 +1,77 @@
+# Workflow de deploiement GitHub Pages — iacashflow.pro
+# Deploie automatiquement le site sur chaque push sur main
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'agents/**'
+      - 'lib/**'
+      - 'shared/**'
+      - 'prompts/**'
+      - 'orchestrator.py'
+      - 'config.yaml'
+      - 'launch_swarm.sh'
+      - 'setup.sh'
+      - 'QUICKSTART.md'
+      - 'PROJECT-BRIEF.md'
+  workflow_dispatch:
+
+# Permissions pour deployer sur GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Empeche les deploiements concurrents
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Construit l'artefact en incluant uniquement les fichiers du site
+      - name: Preparer les fichiers du site
+        run: |
+          mkdir -p _site
+          # Copier les fichiers HTML, CSS, JS et assets
+          cp -r *.html _site/ 2>/dev/null || true
+          cp -r css/ _site/css/ 2>/dev/null || true
+          cp -r js/ _site/js/ 2>/dev/null || true
+          cp -r assets/ _site/assets/ 2>/dev/null || true
+          cp -r images/ _site/images/ 2>/dev/null || true
+          cp -r fonts/ _site/fonts/ 2>/dev/null || true
+          # Copier les fichiers racine utiles
+          cp favicon.ico _site/ 2>/dev/null || true
+          cp robots.txt _site/ 2>/dev/null || true
+          cp sitemap.xml _site/ 2>/dev/null || true
+          cp CNAME _site/ 2>/dev/null || true
+          echo "Contenu du site :"
+          find _site -type f | head -50
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
