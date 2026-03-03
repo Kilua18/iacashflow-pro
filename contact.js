@@ -7,7 +7,7 @@
   'use strict';
 
   // URL du Cloudflare Worker (a configurer en production)
-  const WORKER_URL = 'https://contact-worker.iacashflow.workers.dev';
+  const WORKER_URL = 'https://contact-worker.kkamagra18.workers.dev';
 
   // Elements du DOM
   const form = document.getElementById('contact-form');
