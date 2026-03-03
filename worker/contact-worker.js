@@ -13,7 +13,7 @@
 
 const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email';
 const NOTIFICATION_EMAIL = 'nks.avenir@gmail.com';
-const SENDER_EMAIL = 'contact@iacashflow.pro';
+const SENDER_EMAIL = 'kkamagra18@gmail.com';
 const SENDER_NAME = 'IA CashFlow';
 
 /**
