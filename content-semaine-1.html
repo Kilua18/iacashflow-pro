@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semaine 1 — Planning Content Instagram | IA CashFlow</title>
+  <meta name="description" content="Planning de contenu Instagram semaine 1 — IA CashFlow. 7 jours, 7 posts stratégiques pour maximiser reach et conversion.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #00D4AA;
+      --color-secondary: #1A1A2E;
+      --color-accent: #FF6B35;
+      --color-bg: #0D0D1A;
+      --color-text: #E0E0E0;
+      --color-text-muted: #8A8A9A;
+      --color-border: rgba(255, 255, 255, 0.08);
+      --color-glass-bg: rgba(255, 255, 255, 0.04);
+      --color-glass-border: rgba(255, 255, 255, 0.1);
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- Header --- */
+    .page-header {
+      text-align: center;
+      padding: 3rem 1.5rem 2rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .page-header a {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .page-header h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+      margin: 1rem 0 0.5rem;
+    }
+    .page-header h1 span { color: var(--color-primary); }
+    .page-header p {
+      color: var(--color-text-muted);
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* --- Strategy Banner --- */
+    .strategy-banner {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(135deg, rgba(0,212,170,0.08), rgba(255,107,53,0.06));
+      border: 1px solid rgba(0,212,170,0.2);
+      border-radius: var(--radius-lg);
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+    .strategy-banner strong { color: var(--color-primary); }
+
+    /* --- Week Grid --- */
+    .week-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* --- Day Card --- */
+    .day-card {
+      background: var(--color-glass-bg);
+      border: 1px solid var(--color-glass-border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .day-card:hover {
+      border-color: rgba(0, 212, 170, 0.25);
+    }
+    .day-card.active {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 30px rgba(0,212,170,0.08);
+    }
+
+    /* --- Day Header (clickable) --- */
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s ease;
+    }
+    .day-header:hover { background: rgba(255,255,255,0.02); }
+
+    .day-number {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .day-number.reel { background: linear-gradient(135deg, #FF6B35, #FF3366); }
+    .day-number.carousel { background: linear-gradient(135deg, #00D4AA, #00A3FF); }
+    .day-number.static { background: linear-gradient(135deg, #8B5CF6, #6366F1); }
+    .day-number.conversion { background: linear-gradient(135deg, #F59E0B, #EF4444); }
+
+    .day-meta { flex: 1; min-width: 0; }
+    .day-meta .day-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .day-meta .day-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 0.15rem;
+    }
+
+    .day-badges {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    .badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .badge-reel { background: rgba(255,107,53,0.15); color: #FF6B35; }
+    .badge-carousel { background: rgba(0,212,170,0.15); color: #00D4AA; }
+    .badge-static { background: rgba(139,92,246,0.15); color: #8B5CF6; }
+    .badge-reach { background: rgba(0,163,255,0.12); color: #00A3FF; }
+    .badge-engage { background: rgba(245,158,11,0.12); color: #F59E0B; }
+    .badge-convert { background: rgba(239,68,68,0.12); color: #EF4444; }
+
+    .day-chevron {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      color: var(--color-text-muted);
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .day-card.active .day-chevron {
+      transform: rotate(180deg);
+      color: var(--color-primary);
+    }
+
+    /* --- Day Content (expandable) --- */
+    .day-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .day-content-inner {
+      padding: 0 1.5rem 1.5rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+    }
+    @media (max-width: 700px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .day-badges { display: none; }
+    }
+
+    .content-block h3 {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .content-block h3::before {
+      content: '';
+      width: 3px;
+      height: 14px;
+      background: var(--color-primary);
+      border-radius: 2px;
+    }
+
+    .script-block {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--color-text);
+    }
+    .script-block .timestamp {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-accent);
+      display: block;
+      margin-top: 0.75rem;
+      margin-bottom: 0.15rem;
+    }
+    .script-block .timestamp:first-child { margin-top: 0; }
+
+    .caption-block {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      font-size: 0.88rem;
+      line-height: 1.75;
+    }
+    .caption-block .hook {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .caption-block .body { color: var(--color-text-muted); }
+    .caption-block .hashtags {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: rgba(0,212,170,0.6);
+    }
+
+    .cta-box {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,51,102,0.08));
+      border: 1px solid rgba(255,107,53,0.25);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cta-box .cta-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      flex-shrink: 0;
+    }
+    .cta-box .cta-text {
+      font-size: 0.9rem;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* Slides list for carousels */
+    .slides-list {
+      list-style: none;
+      counter-reset: slide;
+    }
+    .slides-list li {
+      counter-increment: slide;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.88rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: baseline;
+    }
+    .slides-list li:last-child { border-bottom: none; }
+    .slides-list li::before {
+      content: counter(slide);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-primary);
+      background: rgba(0,212,170,0.1);
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    /* --- Vigilance Section --- */
+    .vigilance {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      padding: 1.5rem 2rem;
+      background: rgba(245,158,11,0.06);
+      border: 1px solid rgba(245,158,11,0.2);
+      border-radius: var(--radius-lg);
+    }
+    .vigilance h3 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: #F59E0B;
+      margin-bottom: 0.75rem;
+    }
+    .vigilance ul {
+      list-style: none;
+      padding: 0;
+    }
+    .vigilance li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+    }
+    .vigilance li::before {
+      content: '!';
+      position: absolute;
+      left: 0;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: #F59E0B;
+    }
+
+    /* --- Footer --- */
+    .page-footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--color-border);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+    .page-footer a { color: var(--color-primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="page-header">
+    <a href="index.html">IA CashFlow</a>
+    <h1>Semaine 1 — <span>Content Schedule</span></h1>
+    <p>7 jours, 7 posts stratégiques. Cliquez sur chaque jour pour voir le script, la caption et le CTA détaillés.</p>
+  </header>
+
+  <!-- Strategy Banner -->
+  <div class="strategy-banner">
+    <strong>Logique algorithmique :</strong> La semaine s'ouvre (lundi) et se ferme (dimanche) sur les deux Reels à plus fort potentiel de reach — effet sandwich algorithmique. Les carrousels tombent en milieu de semaine quand l'engagement organique est concentré. Le vendredi est un post de conversion pure : l'audience a été chauffée toute la semaine, on récolte les DM.
+  </div>
+
+  <!-- Week -->
+  <div class="week-container">
+
+    <!-- ===== LUNDI ===== -->
+    <article class="day-card" data-day="1">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-number reel">L</div>
+        <div class="day-meta">
+          <div class="day-label">Lundi 24 mars — Reel</div>
+          <div class="day-title">SubventionAI — Déploiement en production</div>
+        </div>
+        <div class="day-badges">
+          <span class="badge badge-reel">Reel</span>
+          <span class="badge badge-reach">Reach</span>
+        </div>
+        <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="day-content">
+        <div class="day-content-inner">
+          <div class="content-grid">
+            <div class="content-block">
+              <h3>Script Reel (30-45s)</h3>
+              <div class="script-block">
+                <span class="timestamp">0:00 – 0:03 · Hook visuel</span>
+                Screen recording : l'app SubventionAI qui tourne sur un téléphone. Texte overlay : <em>"Cette app trouve tes subventions en 30 secondes."</em>
+                <span class="timestamp">0:03 – 0:12 · Problème</span>
+                "En France, il y a +6 000 aides publiques. Personne ne sait lesquelles il peut toucher. On a construit une IA qui analyse ton profil et te sort les subventions exactes auxquelles tu es éligible."
+                <span class="timestamp">0:12 – 0:25 · Démo live</span>
+                Montrer : saisie du profil → l'IA qui réfléchit → résultats avec montants. Texte overlay sur chaque étape. Musique trending en fond, tempo rapide.
+                <span class="timestamp">0:25 – 0:35 · Proof</span>
+                "On l'a déployé cette semaine. Premiers retours : des utilisateurs ont découvert entre 3 000€ et 45 000€ d'aides qu'ils ne connaissaient pas."
+                <span class="timestamp">0:35 – 0:42 · CTA</span>
+                "Follow pour voir les coulisses du développement IA. On build en public."
+              </div>
+            </div>
+            <div class="content-block">
+              <h3>Caption Instagram</h3>
+              <div class="caption-block">
+                <span class="hook">Cette app IA trouve tes subventions.</span>
+                <span class="body">
+                  On a deployé SubventionAI cette semaine.<br><br>
+                  Le problème : +6 000 aides publiques en France. La plupart des entrepreneurs ne touchent jamais celles auxquelles ils ont droit — parce qu'ils ne savent même pas qu'elles existent.<br><br>
+                  Notre solution : une IA qui analyse ton profil (statut, secteur, localisation) et te sort la liste exacte de tes subventions éligibles. En 30 secondes.<br><br>
+                  Stack : React Native + Supabase + GPT-4o fine-tuné sur les bases DILA/ASP.<br><br>
+                  Premiers résultats : entre 3 000€ et 45 000€ découverts par utilisateur.<br><br>
+                  On build en public. Follow pour la suite.
+                </span>
+                <span class="hashtags">#IA #SubventionAI #Startup #BuildInPublic #AIFrance #Entrepreneuriat #Subventions #ReactNative #IntelligenceArtificielle</span>
+              </div>
+            </div>
+          </div>
+          <div class="cta-box">
+            <span class="cta-label">CTA</span>
+            <span class="cta-text">Follow CTA → "Follow pour voir les coulisses du développement IA."</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== MARDI ===== -->
+    <article class="day-card" data-day="2">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-number carousel">M</div>
+        <div class="day-meta">
+          <div class="day-label">Mardi 25 mars — Carrousel</div>
+          <div class="day-title">5 projets IA qu'on peut construire en 2025</div>
+        </div>
+        <div class="day-badges">
+          <span class="badge badge-carousel">Carrousel</span>
+          <span class="badge badge-engage">Engage</span>
+        </div>
+        <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="day-content">
+        <div class="day-content-inner">
+          <div class="content-grid">
+            <div class="content-block">
+              <h3>Slides du carrousel (7 slides)</h3>
+              <div class="script-block">
+                <ol class="slides-list">
+                  <li><strong>Cover :</strong> "5 apps IA que tu peux lancer en 2025 (avec la stack exacte)" — fond sombre, typo bold, emoji fusée.</li>
+                  <li><strong>App 1 :</strong> Assistant juridique IA — "Analyse tes contrats et détecte les clauses à risque." Stack : GPT-4o + LangChain + Pinecone. Marché : freelances & TPE.</li>
+                  <li><strong>App 2 :</strong> Générateur de business plan IA — "Un BP bankable en 10 minutes." Stack : Claude API + React + Supabase. Marché : porteurs de projet.</li>
+                  <li><strong>App 3 :</strong> Chatbot SAV multi-canal — "Répond sur WhatsApp, Insta, email en simultané." Stack : n8n + OpenAI + Twilio. Marché : e-commerce. <em>(Texte overlay : "Mon préféré →")</em></li>
+                  <li><strong>App 4 :</strong> Dashboard analytics IA — "Prédit ton chiffre d'affaires à 90 jours." Stack : Python + Streamlit + Prophet. Marché : SaaS B2B.</li>
+                  <li><strong>App 5 :</strong> App de matching subventions (SubventionAI) — "Trouve tes aides en 30s." Stack : React Native + Supabase + GPT-4o fine-tuné. Marché : toute la France.</li>
+                  <li><strong>CTA slide :</strong> "Save ce post → tu me remercieras quand tu choisiras ton prochain projet. Follow @iacashflow pour les tutos de build."</li>
+                </ol>
+              </div>
+            </div>
+            <div class="content-block">
+              <h3>Caption Instagram</h3>
+              <div class="caption-block">
+                <span class="hook">5 apps IA à lancer en 2025.</span>
+                <span class="body">
+                  J'ai listé 5 projets IA concrets que n'importe quel dev (ou non-dev avec les bons outils no-code) peut lancer cette année.<br><br>
+                  Pour chacun : l'idée, la stack technique exacte, et le marché cible.<br><br>
+                  La slide 4 c'est mon préféré — un chatbot SAV qui gère WhatsApp + Insta + email en même temps. Le genre de truc que les e-commerçants paieraient 500€/mois sans hésiter.<br><br>
+                  La slide 6 c'est un projet qu'on a réellement construit (SubventionAI). Si ça t'intéresse de voir comment on l'a build → c'est sur mon profil.<br><br>
+                  Save pour y revenir. Slide par slide.
+                </span>
+                <span class="hashtags">#IA #SaaS #StartupIdeas #BuildInPublic #NoCode #IntelligenceArtificielle #Entrepreneuriat #IAFrance #TechFR</span>
+              </div>
+            </div>
+          </div>
+          <div class="cta-box">
+            <span class="cta-label">CTA</span>
+            <span class="cta-text">Save CTA → "Save ce post. La slide 4 = mon préféré." — force le swipe + la sauvegarde.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== MERCREDI ===== -->
+    <article class="day-card" data-day="3">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-number static">Me</div>
+        <div class="day-meta">
+          <div class="day-label">Mercredi 26 mars — Post statique / mini-thread</div>
+          <div class="day-title">SWARM-CLAUDE — Architecture multi-agents</div>
+        </div>
+        <div class="day-badges">
+          <span class="badge badge-static">Statique</span>
+          <span class="badge badge-reach">Viral niche</span>
+        </div>
+        <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="day-content">
+        <div class="day-content-inner">
+          <div class="content-grid">
+            <div class="content-block">
+              <h3>Visuel + Script</h3>
+              <div class="script-block">
+                <span class="timestamp">Visuel principal</span>
+                Schéma d'architecture type "whiteboard" : un nœud central "SWARM Orchestrator" avec 5 branches vers des agents (Agent Code, Agent QA, Agent Deploy, Agent Design, Agent Data). Style néon sur fond sombre. Texte overlay : <em>"Comment on livre 15x plus vite."</em>
+                <span class="timestamp">Contenu du post</span>
+                "SWARM-CORP, c'est notre système interne. Un orchestrateur IA qui coordonne plusieurs agents Claude en parallèle.<br><br>
+                Chaque agent a un rôle :<br>
+                → Agent Code : écrit le code<br>
+                → Agent QA : teste en temps réel<br>
+                → Agent Deploy : pousse en production<br>
+                → Agent Design : génère les assets UI<br>
+                → Agent Data : structure la base de données<br><br>
+                Résultat : ce qui prend 3 semaines à une équipe de 5, on le fait en 2 jours.<br><br>
+                C'est pas de la magie — c'est de l'orchestration multi-agents. Et c'est le futur du développement logiciel."
+              </div>
+            </div>
+            <div class="content-block">
+              <h3>Caption Instagram</h3>
+              <div class="caption-block">
+                <span class="hook">On a remplacé une équipe de 5 par 5 agents IA.</span>
+                <span class="body">
+                  Pas pour virer des gens. Pour aller 15x plus vite.<br><br>
+                  SWARM-CORP, c'est notre orchestrateur multi-agents. Chaque agent Claude a un rôle dédié. Ils travaillent en parallèle, se corrigent entre eux, et livrent du code production-ready.<br><br>
+                  Le diagramme dans le post montre l'architecture réelle qu'on utilise.<br><br>
+                  Si tu veux comprendre comment implémenter un système multi-agents pour ton business → envoie "SWARM" en DM. Je t'envoie le breakdown technique complet.<br><br>
+                  C'est le post le plus technique que j'ai fait. Si ça parle à 10 personnes, ça valait le coup.
+                </span>
+                <span class="hashtags">#SWARM #MultiAgents #ClaudeAI #IA #Orchestration #DevIA #AIEngineering #BuildInPublic #TechFR #FutureOfWork</span>
+              </div>
+            </div>
+          </div>
+          <div class="cta-box">
+            <span class="cta-label">CTA</span>
+            <span class="cta-text">DM CTA → Envoie "SWARM" en DM pour le breakdown technique. (Haute valeur perçue = DM justifié)</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== JEUDI ===== -->
+    <article class="day-card" data-day="4">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-number carousel">J</div>
+        <div class="day-meta">
+          <div class="day-label">Jeudi 27 mars — Carrousel</div>
+          <div class="day-title">Template KB — Base de connaissances pour ton IA</div>
+        </div>
+        <div class="day-badges">
+          <span class="badge badge-carousel">Carrousel</span>
+          <span class="badge badge-engage">Save</span>
+        </div>
+        <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="day-content">
+        <div class="day-content-inner">
+          <div class="content-grid">
+            <div class="content-block">
+              <h3>Slides du carrousel (6 slides)</h3>
+              <div class="script-block">
+                <ol class="slides-list">
+                  <li><strong>Cover :</strong> "Le template que j'utilise pour alimenter mes IA" — visuel : capture d'écran Notion floutée avec overlay texte.</li>
+                  <li><strong>Le problème :</strong> "90% des gens qui utilisent ChatGPT/Claude lui parlent sans contexte. Résultat : des réponses génériques. La différence entre une IA moyenne et une IA qui performe → la base de connaissances qu'on lui donne."</li>
+                  <li><strong>Structure KB :</strong> "Mon template en 4 sections : 1) Contexte business (qui tu es, ton marché) 2) Tone of voice (exemples réels de ton style) 3) Base clients (personas, objections, besoins) 4) Historique projets (ce qui a marché, ce qui a foiré)"</li>
+                  <li><strong>Exemple concret :</strong> "Pour SubventionAI, notre KB fait 12 pages. L'IA connaît chaque type de subvention, chaque critère d'éligibilité, chaque edge case. C'est pour ça qu'elle est précise."</li>
+                  <li><strong>Pro tip :</strong> "Ton KB doit évoluer. Chaque semaine, ajoute les nouvelles infos : retours clients, cas d'usage, données marché. Une IA avec une KB vivante &gt; une IA avec un prompt statique."</li>
+                  <li><strong>CTA slide :</strong> "Save ce carrousel. Je drop le template Notion gratuit la semaine prochaine. Follow pour ne pas le rater."</li>
+                </ol>
+              </div>
+            </div>
+            <div class="content-block">
+              <h3>Caption Instagram</h3>
+              <div class="caption-block">
+                <span class="hook">Ton IA est nulle ? C'est pas l'IA le problème.</span>
+                <span class="body">
+                  C'est ce que tu lui donnes.<br><br>
+                  La plupart des gens promptent dans le vide. Pas de contexte, pas de données, pas de structure. Et après ils disent "ChatGPT c'est nul".<br><br>
+                  Le secret des gens qui ont des résultats insane avec l'IA → ils ont une base de connaissances structurée.<br><br>
+                  Dans ce carrousel, je te montre le template exact qu'on utilise chez IA CashFlow. 4 sections, applicable à n'importe quel business.<br><br>
+                  La semaine prochaine je drop le template Notion gratuit. Save ce post + follow pour être notifié.<br><br>
+                  Slide 3 = la structure. Slide 5 = le pro tip qui change tout.
+                </span>
+                <span class="hashtags">#IA #Prompt #KnowledgeBase #ChatGPT #Claude #Template #Productivité #AITips #BuildInPublic #Notion</span>
+              </div>
+            </div>
+          </div>
+          <div class="cta-box">
+            <span class="cta-label">CTA</span>
+            <span class="cta-text">Save + Follow CTA → "Save ce post. Template Notion gratuit la semaine prochaine." — force save + follow.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== VENDREDI ===== -->
+    <article class="day-card" data-day="5">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-number conversion">V</div>
+        <div class="day-meta">
+          <div class="day-label">Vendredi 28 mars — Post conversion</div>
+          <div class="day-title">Audit IA gratuit — Conversion DM</div>
+        </div>
+        <div class="day-badges">
+          <span class="badge badge-static">Statique</span>
+          <span class="badge badge-convert">Convert</span>
+        </div>
+        <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="day-content">
+        <div class="day-content-inner">
+          <div class="content-grid">
+            <div class="content-block">
+              <h3>Visuel + Script</h3>
+              <div class="script-block">
+                <span class="timestamp">Visuel</span>
+                Design épuré. Fond sombre. Texte centré en gros : <em>"Audit IA gratuit pour ton business"</em>. Sous-texte : "15 minutes. 3 recommandations concrètes." Logo IA CashFlow en bas.
+                <span class="timestamp">Angle</span>
+                Post court, direct, orienté action. Pas d'éducation, pas de storytelling — pure conversion. L'audience a consommé du contenu toute la semaine. Ce post récolte l'intention.
+              </div>
+            </div>
+            <div class="content-block">
+              <h3>Caption Instagram</h3>
+              <div class="caption-block">
+                <span class="hook">Cette semaine j'offre 10 audits IA gratuits.</span>
+                <span class="body">
+                  Pas un template générique. Un vrai appel de 15 min où j'analyse ton business et je te donne 3 actions concrètes pour intégrer l'IA.<br><br>
+                  Ce que tu repars avec :<br>
+                  → Les 3 tâches à automatiser en priorité<br>
+                  → La stack IA recommandée pour ton cas<br>
+                  → Un plan d'action sur 30 jours<br><br>
+                  Pourquoi gratuit ? Parce que 70% des gens qui font cet audit finissent par bosser avec nous. On préfère montrer plutôt que promettre.<br><br>
+                  Pour réserver : envoie "AUDIT" en DM.<br><br>
+                  10 places. Quand c'est plein, c'est plein.
+                </span>
+                <span class="hashtags">#IA #Audit #Gratuit #BusinessIA #Automatisation #ConsultingIA #IAFrance #Entrepreneur #FreelanceIA</span>
+              </div>
+            </div>
+          </div>
+          <div class="cta-box">
+            <span class="cta-label">CTA</span>
+            <span class="cta-text">DM CTA → Envoie "AUDIT" en DM. (Mot-clé court = passage à l'action facilité. Urgence : 10 places.)</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== SAMEDI ===== -->
+    <article class="day-card" data-day="6">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-number static">S</div>
+        <div class="day-meta">
+          <div class="day-label">Samedi 29 mars — Story + Repos</div>
+          <div class="day-title">Behind the scenes — Stories only</div>
+        </div>
+        <div class="day-badges">
+          <span class="badge badge-static">Stories</span>
+          <span class="badge badge-engage">Engage</span>
+        </div>
+        <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="day-content">
+        <div class="day-content-inner">
+          <div class="content-grid">
+            <div class="content-block">
+              <h3>Stories (3-5 stories)</h3>
+              <div class="script-block">
+                <span class="timestamp">Story 1 · Setup</span>
+                Photo/vidéo du setup de travail. Texte : "Samedi matin. Les agents SWARM tournent. Moi je code." Sticker sondage : "Vous bossez le samedi ? OUI / NON MAIS OUI"
+                <span class="timestamp">Story 2 · Teasing</span>
+                Screen recording flou d'un nouveau projet en cours. Texte : "Nouveau projet IA en cours... Vous devinez c'est quoi ?" Sticker quiz avec 3 options.
+                <span class="timestamp">Story 3 · Récap semaine</span>
+                Texte sur fond : "Cette semaine → SubventionAI déployé, SWARM expliqué, 5 idées de projets IA partagées. Semaine prochaine → encore plus lourd." Sticker : "Hâte ? 🔥"
+                <span class="timestamp">Story 4 · Rappel DM</span>
+                "Il reste des places pour l'audit IA gratuit. DM 'AUDIT' si t'as pas encore réservé." Lien sticker vers le post vendredi.
+              </div>
+            </div>
+            <div class="content-block">
+              <h3>Objectif</h3>
+              <div class="caption-block">
+                <span class="hook">Pas de post feed le samedi.</span>
+                <span class="body">
+                  Le samedi est réservé aux stories uniquement. Objectifs :<br><br>
+                  → Maintenir la présence sans fatiguer l'algorithme du feed<br>
+                  → Humaniser le compte (behind the scenes)<br>
+                  → Récupérer les derniers DM "AUDIT" avec un rappel soft<br>
+                  → Teaser la semaine suivante pour maintenir l'anticipation<br><br>
+                  Les stickers (sondage, quiz) boostent le taux de réponse stories, ce qui augmente le positionnement dans le story tray de l'audience.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="cta-box">
+            <span class="cta-label">CTA</span>
+            <span class="cta-text">Rappel soft "AUDIT" en story 4 + stickers engagement sur chaque story.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== DIMANCHE ===== -->
+    <article class="day-card" data-day="7">
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-number reel">D</div>
+        <div class="day-meta">
+          <div class="day-label">Dimanche 30 mars — Reel</div>
+          <div class="day-title">Combat.AI — L'IA qui analyse les combats</div>
+        </div>
+        <div class="day-badges">
+          <span class="badge badge-reel">Reel</span>
+          <span class="badge badge-reach">Reach max</span>
+        </div>
+        <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="day-content">
+        <div class="day-content-inner">
+          <div class="content-grid">
+            <div class="content-block">
+              <h3>Script Reel (30-45s)</h3>
+              <div class="script-block">
+                <span class="timestamp">0:00 – 0:03 · Hook choc</span>
+                Clip de combat (MMA/boxe, libre de droits ou filmé). Freeze frame. Texte overlay : <em>"Cette IA prédit le vainqueur avant la fin du round."</em>
+                <span class="timestamp">0:03 – 0:10 · Contexte</span>
+                "On a construit une IA qui analyse les combats en temps réel. Elle regarde la posture, la distance, le rythme des coups, la fatigue visible — et elle prédit l'issue."
+                <span class="timestamp">0:10 – 0:22 · Démo</span>
+                Screen recording de l'interface Combat.AI : vidéo d'un combat avec overlay IA — détection de pose, barres de stats, pourcentage de probabilité de victoire qui évolue en temps réel. Musique : trap/drill instrumental, tempo agressif.
+                <span class="timestamp">0:22 – 0:32 · Tech flex</span>
+                "Derrière c'est du computer vision + un modèle custom entraîné sur 10 000 rounds. La précision actuelle : 78% sur les combats de MMA."
+                <span class="timestamp">0:32 – 0:42 · CTA</span>
+                "Le sport × l'IA, c'est une niche que personne ne couvre. Follow si tu veux voir la suite. On prépare un truc pour l'UFC."
+              </div>
+            </div>
+            <div class="content-block">
+              <h3>Caption Instagram</h3>
+              <div class="caption-block">
+                <span class="hook">On a créé une IA pour les sports de combat.</span>
+                <span class="body">
+                  Combat.AI analyse les combats en temps réel. Posture, distance, rythme, fatigue — et prédit le résultat.<br><br>
+                  Pourquoi ? Parce que le sport est un des derniers secteurs où l'IA est sous-exploitée. Et les sports de combat encore plus — c'est un marché de 15 milliards $ avec quasi zéro outils d'analyse IA.<br><br>
+                  Ce qu'on a construit :<br>
+                  → Computer vision en temps réel<br>
+                  → Modèle custom entraîné sur 10 000+ rounds<br>
+                  → Précision actuelle : 78%<br>
+                  → Interface avec overlay sur la vidéo<br><br>
+                  L'objectif : atteindre 90% et proposer l'outil aux équipes pro.<br><br>
+                  Le sport × l'IA → c'est la prochaine vague. Follow pour voir l'évolution du projet.
+                </span>
+                <span class="hashtags">#CombatAI #IA #MMA #UFC #SportsIA #ComputerVision #MachineLearning #BuildInPublic #TechFR #Innovation #BoxeIA</span>
+              </div>
+            </div>
+          </div>
+          <div class="cta-box">
+            <span class="cta-label">CTA</span>
+            <span class="cta-text">Follow CTA → "Sport × IA = niche quasi-vierge. Follow pour l'évolution." — Angle niche = fort potentiel de reach.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Vigilance -->
+  <section class="vigilance">
+    <h3>Points de vigilance avant publication</h3>
+    <ul>
+      <li>Vérifier que chaque hook visible (première ligne caption) fait moins de 125 caractères</li>
+      <li>Chaque Reel (lundi + dimanche) doit avoir des sous-titres — l'audience IA francophone consomme souvent en muet</li>
+      <li>Les carrousels doivent être exportés en 1080×1350 (format 4:5) pour un affichage optimal dans le feed</li>
+      <li>Poster les Reels entre 8h-9h ou 18h-19h (heures de pointe audience FR)</li>
+      <li>Répondre à chaque commentaire dans les 30 premières minutes pour booster l'algorithme</li>
+      <li>Les DM "SWARM" et "AUDIT" doivent être configurés en auto-reply (ManyChat ou équivalent)</li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <p><a href="index.html">← Retour au site</a> · IA CashFlow — Content Schedule Semaine 1</p>
+  </footer>
+
+  <script>
+    function toggleDay(header) {
+      const card = header.closest('.day-card');
+      const content = card.querySelector('.day-content');
+      const isActive = card.classList.contains('active');
+
+      // Close all
+      document.querySelectorAll('.day-card.active').forEach(c => {
+        c.classList.remove('active');
+        c.querySelector('.day-content').style.maxHeight = '0';
+      });
+
+      // Open clicked (if wasn't already open)
+      if (!isActive) {
+        card.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }
+
+    // Open first day by default
+    document.addEventListener('DOMContentLoaded', () => {
+      const first = document.querySelector('.day-card[data-day="1"] .day-header');
+      if (first) toggleDay(first);
+    });
+  </script>
+
+</body>
+</html>
